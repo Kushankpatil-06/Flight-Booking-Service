@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     flightId: {type:DataTypes.INTEGER,allowNull:false},
     userId: {type:DataTypes.INTEGER,allowNull:false},
     status: {type:DataTypes.INTEGER,allowNull:false,values:['In Process','Booked','Cancelled'],defaultValue:'In Process'},
+    noOfSeats: {type: DataTypes.INTEGER,allowNull: false,defaultValue: 1},
+    totalCost: {type: DataTypes.INTEGER,allowNull: false,defaultValue: 0}
+
   }, {
     sequelize,
     modelName: 'Booking',

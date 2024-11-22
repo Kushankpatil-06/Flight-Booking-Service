@@ -12,7 +12,7 @@ const db = require('./models/index')
     app.use('/api', apiRoutes);
     app.listen(3000,()=>{
         if(process.env.DB_SYNC){
-   db.sequelize.sync({alter:true})
+        db.sequelize.sync({alter:true})
         }
         console.log('Server is running Fine NoProblem');
     })
