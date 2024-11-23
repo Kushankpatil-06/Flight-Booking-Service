@@ -5,7 +5,6 @@ const bodyParser  = require('body-parser');
  const apiRoutes = require('./routes');
 const db = require('./models/index')
 
-
   const SetupAndStartServer =()=>{
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));

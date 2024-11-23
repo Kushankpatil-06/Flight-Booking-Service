@@ -1,13 +1,13 @@
 const express = require('express');
+const BookingMiddleware = require('../../middlewares/validateBookingRequest')
+const { BookingController } = require('../../controllers/index');
+// const { createChannel } = require('../../utils/messageQueue');
 
-const { InfoController } = require('../../controllers');
-
-// const bookingRoutes = require('./booking');
-
+// const channel = await createChannel();
+const bookingController = new BookingController();
 const router = express.Router();
 
-// router.get('/info', InfoController.info);
-
-// router.use('/bookings', bookingRoutes);
+router.post('/bookings',BookingMiddleware.validateBookingRequest, bookingController.create);
+// router.post('/publish', bookingController.sendMessageToQueue);
 
 module.exports = router;
