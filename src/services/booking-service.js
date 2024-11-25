@@ -16,15 +16,15 @@ class BookingService {
             const getFlightRequestURL = `${FLIGHT_SERVICE_PATH}/api/v1/flights/${flightId}`;
             const response = await axios.get(getFlightRequestURL);
             const flightData = response.data.data;
-            console.log(flightData);
+            // console.log(flightData);
             let priceOfTheFlight = flightData.price;
             if(data.noOfSeats > flightData.totalSeats) {
                 throw new ServiceError('Something went wrong in the booking process', 'Insufficient seats in the flight');
             }
             const totalCost = priceOfTheFlight * data.noOfSeats;
-            console.log(data);
+            // console.log(data);
             const bookingPayload = {...data, totalCost};
-            console.log(bookingPayload);
+            // console.log(bookingPayload);
             const booking = await this.bookingRepository.create(bookingPayload);
             const updateFlightRequestURL = `${FLIGHT_SERVICE_PATH}/api/v1/flights/${booking.flightId}`; 
             console.log(updateFlightRequestURL);
